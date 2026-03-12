@@ -1,0 +1,78 @@
+"use client"
+
+import { useState } from "react"
+
+export default function SearchBar({ setGuide, loading, setLoading }){
+
+const [query,setQuery] = useState("")
+
+async function askAI(){
+
+if(!query.trim()) return
+
+console.log("Sending:", query)
+
+setLoading(true)
+
+try{
+
+const res = await fetch("/api/chat",{
+method:"POST",
+headers:{ "Content-Type":"application/json" },
+body: JSON.stringify({ message: query })
+})
+
+const data = await res.json()
+
+setGuide(data)
+
+}catch(err){
+
+console.error("AI Error:",err)
+
+}finally{
+
+setLoading(false)
+
+}
+
+}
+
+return(
+
+<div className="bg-white shadow-md p-6 rounded-xl">
+
+<div className="flex gap-3">
+
+<input
+className="w-full border rounded-lg p-4"
+placeholder="Ask anything about Indian processes..."
+value={query}
+onChange={(e)=>setQuery(e.target.value)}
+/>
+
+<button
+onClick={askAI}
+disabled={loading}
+className={`px-6 rounded-lg text-white flex items-center gap-2
+${loading ? "bg-blue-400 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700"}
+`}
+>
+
+{loading ? (
+<>
+<span className="animate-spin">⏳</span>
+Thinking...
+</>
+) : (
+"Ask"
+)}
+
+</button>
+
+</div>
+
+</div>
+
+)
+}
