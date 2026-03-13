@@ -1,4 +1,9 @@
-export default function Checklist({ items = [] }) {
+type Document = {
+  name: string
+  description?: string
+}
+
+export default function Checklist({ items = [] }: { items?: Document[] }) {
 
 if(!items || items.length === 0) return null
 

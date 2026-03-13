@@ -1,36 +1,26 @@
-export default function InfoBox({ notes = [] }) {
+export default function InfoBox({ notes = [] }: { notes?: string[] }) {
 
-if(notes.length === 0) return null;
+if(!notes || notes.length === 0) return null
 
-return (
+return(
 
-<div className="mt-6">
+<div className="mt-6 bg-yellow-50 border-l-4 border-yellow-400 p-4">
 
-<h3 className="font-semibold mb-3">
+<h3 className="font-semibold mb-2">
 Important Notes
 </h3>
 
-<div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+<ul className="list-disc ml-5 text-sm text-gray-700">
 
-<ul className="space-y-2">
+{notes.map((note,i)=>(
 
-{notes.map((note, index)=>(
-<li key={index} className="flex items-start">
-
-<span className="mr-2">
-⚠️
-</span>
-
-<span className="text-gray-700">
+<li key={i}>
 {note}
-</span>
-
 </li>
+
 ))}
 
 </ul>
-
-</div>
 
 </div>
 

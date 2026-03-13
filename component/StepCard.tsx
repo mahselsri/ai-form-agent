@@ -1,4 +1,19 @@
-export default function StepCard({ step = {}, index = 0 }) {
+type Step = {
+  title: string
+  description: string
+  links?: {
+    title: string
+    url: string
+    description?: string
+  }[]
+}
+
+type Props = {
+  step: Step
+  index: number
+}
+
+export default function StepCard({ step, index }: Props) {
 
 return(
 

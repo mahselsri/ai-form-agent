@@ -1,4 +1,9 @@
-export default function Timeline({ timeline = [] }) {
+type TimelineItem = {
+  stage: string
+  duration: string
+}
+
+export default function Timeline({ timeline = [] }: { timeline?: TimelineItem[] }) {
 
 if(!timeline || timeline.length === 0) return null
 

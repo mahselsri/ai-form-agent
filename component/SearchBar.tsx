@@ -1,8 +1,20 @@
 "use client"
 
 import { useState } from "react"
+type Guide = {
+  title: string
+  steps?: any[]
+  documents?: any[]
+  timeline?: any[]
+  notes?: string[]
+}
 
-export default function SearchBar({ setGuide, loading, setLoading }){
+type Props = {
+  setGuide: (guide: Guide) => void
+  loading: boolean
+  setLoading: (loading: boolean) => void
+}
+export default function SearchBar({ setGuide, loading, setLoading }: Props){
 
 const [query,setQuery] = useState("")
 

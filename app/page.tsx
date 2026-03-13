@@ -15,11 +15,27 @@ type Step = {
   title: string;
   description: string;
 };
+type Documents= {
+    name: string
+    description?: string
+  };
+
+type Timeline = {
+    stage: string
+    duration: string
+  };
+
+  type Notes={
+    info:string[]
+  }
 
 type Guide = {
-  title: string;
-  steps?: Step[];
-};
+  title: string
+  steps?: Step[]
+  documents?: Documents[]
+  timeline?: Timeline[]
+  notes?: string[]
+}
 
 export default function Dashboard(){
 

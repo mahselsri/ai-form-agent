@@ -1,6 +1,18 @@
 "use client"
+type Guide = {
+  title: string
+  steps?: any[]
+  documents?: any[]
+  timeline?: any[]
+  notes?: string[]
+}
 
-export default function QuickActions({ setGuide, loading, setLoading }){
+type Props = {
+  setGuide: (guide: Guide) => void
+  loading: boolean
+  setLoading: (loading: boolean) => void
+}
+export default function QuickActions({ setGuide, loading, setLoading }: Props){
 
 async function askAI(query:any){
 
