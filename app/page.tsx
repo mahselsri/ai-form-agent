@@ -11,10 +11,21 @@ import Timeline from "@/component/Timeline"
 import Checklist from "@/component/Checklist"
 import InfoBox from "@/component/InfoBox"
 
+type Step = {
+  title: string;
+  description: string;
+};
+
+type Guide = {
+  title: string;
+  steps?: Step[];
+};
+
 export default function Dashboard(){
 
-const [guide,setGuide] = useState(null)
+const [guide, setGuide] = useState<Guide | null>(null);
 const [loading,setLoading]=useState(false)
+
 
 return(
 

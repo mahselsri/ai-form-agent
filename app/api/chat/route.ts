@@ -1,6 +1,6 @@
 import { groq } from "@/lib/groq";
 
-export async function POST(req) {
+export async function POST(req:any) {
 
 const { message } = await req.json();
 console.log("Incoming request:", message)
@@ -77,7 +77,7 @@ content: message
 ]
 });
 
-const text = completion.choices[0].message.content;
+const text:any = completion.choices[0].message.content;
 
 const cleaned = text.replace(/```json|```/g, "").trim();
 

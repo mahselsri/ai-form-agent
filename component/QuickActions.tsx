@@ -2,7 +2,7 @@
 
 export default function QuickActions({ setGuide, loading, setLoading }){
 
-async function askAI(query){
+async function askAI(query:any){
 
 setLoading(true)
 
