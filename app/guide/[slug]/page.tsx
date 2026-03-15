@@ -4,8 +4,14 @@ import Timeline from "@/component/Timeline"
 import Checklist from "@/component/Checklist"
 import InfoBox from "@/component/InfoBox"
 
-export default async function GuidePage({ params }) {
+type PageProps = {
+  params: {
+    slug: string
+  }
+}
+export default async function GuidePage({ params }: PageProps) {
 
+    
 const { slug } = await params
 
 const { data, error } = await supabase
