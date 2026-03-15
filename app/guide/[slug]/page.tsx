@@ -9,6 +9,10 @@ type PageProps = {
     slug: string
   }
 }
+type Step = {
+  title: string
+  description: string
+}
 export default async function GuidePage({ params }: PageProps) {
 
     
@@ -34,7 +38,8 @@ return (
 {guide.title}
 </h1>
 
-{guide.steps?.map((step,index)=>(
+{guide.steps?.map((step: Step, index: number)=>(
+
 <StepCard key={index} step={step} index={index}/>
 ))}
 

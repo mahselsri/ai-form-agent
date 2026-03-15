@@ -1,6 +1,14 @@
 "use client"
 
-export default function FollowUps({ questions, askAI }) {
+type PageProps = {
+  questions:string
+  askAI:string
+}
+type FollowUpsProps = {
+  questions?: string[]
+  askAI: (q: string) => void
+}
+export default function FollowUps({ questions, askAI }:FollowUpsProps) {
 
 if(!questions || questions.length === 0) return null
 
@@ -13,8 +21,8 @@ Ask a follow-up
 </h3>
 
 <div className="flex flex-wrap gap-3">
+{questions.map((q:string,i:number)=>(
 
-{questions.map((q,i)=>(
 
 <button
 key={i}

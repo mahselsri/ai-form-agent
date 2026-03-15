@@ -1,10 +1,17 @@
 "use client"
-
-export default function ProcessStory({ story }) {
+type StoryNode = {
+ stage:string
+ description:string
+ emotion:string
+}
+type ProcessStoryProps = {
+  story?: StoryNode[]
+}
+export default function ProcessStory({ story }:ProcessStoryProps) {
 
 if(!story || story.length === 0) return null
 
-const icons = {
+const icons: Record<string,string> = {
 start:"🚀",
 action:"📝",
 check:"📄",
@@ -22,7 +29,7 @@ Your Journey
 
 <div className="space-y-6">
 
-{story.map((s,i)=>(
+{story.map((s: StoryNode, i: number)=>(
 
 <div key={i} className="flex items-start gap-4">
 
