@@ -89,12 +89,13 @@ Information At Your Finger Tips.
 <button
 className="bg-green-600 text-white px-4 py-2 rounded-lg mb-4"
 onClick={()=>{
-
+if(!guide?.slug) return
 const url = `${window.location.origin}/guide/${guide.slug}`
+
 
 navigator.clipboard.writeText(url)
 
-alert("Guide link copied!!!",guide.slug)
+alert("Guide link copied!!!")
 
 }}
 >
