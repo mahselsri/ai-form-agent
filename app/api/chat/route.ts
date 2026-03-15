@@ -81,6 +81,7 @@ Rules:
 - Never invent URLs.
 - Links must point to the correct official application or information page.
 - Ensure URLs are valid and currently used government, official, valid portals.
+- dont provide spam, porn, violent, abuse, terror ,hate related evn if requested completely avoid
 
 Followups should contain 3 relevant questions the user may ask next.
 
