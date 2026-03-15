@@ -20,7 +20,10 @@ Return ONLY valid JSON.
 Schema:
 
 {
- "title":"",
+"title": "",
+ "difficulty":"easy|medium|hard",
+ "estimated_time":"",
+ "office_visit":"yes|no|sometimes",
 
  "steps":[
    {
@@ -69,6 +72,15 @@ Schema:
      "emotion":""
    }
  ]
+   "comparison":[
+ {
+   "process":"",
+   "difficulty":"",
+   "time":"",
+   "office_visit":"",
+   "fees":""
+ }
+]
 
 }
 

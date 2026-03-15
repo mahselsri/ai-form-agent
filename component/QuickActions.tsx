@@ -14,6 +14,9 @@ type Guide = {
   slug?:string
   followups?: string[]
   story?: StoryNode[]
+  difficulty?: string
+  estimated_time?: string
+  office_visit?: string
 
 }
 

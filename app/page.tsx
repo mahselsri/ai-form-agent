@@ -12,7 +12,8 @@ import Checklist from "@/component/Checklist"
 import InfoBox from "@/component/InfoBox"
 import FollowUps from "@/component/FollowUps"
 import ProcessStory from "@/component/ProcessStory"
-
+import ProcessMeter from "@/component/ProcessMeter"
+import ComparisonTable from "@/component/ComparisonTable"
 type Step = {
   title: string
   description: string
@@ -34,6 +35,13 @@ type StoryNode = {
   emotion:string
 }
 
+type Comparison = {
+  process: string
+  difficulty: string
+  time: string
+  office_visit: string
+  fees: string
+}
 type Guide = {
   title: string
   steps?: any[]
@@ -43,8 +51,13 @@ type Guide = {
   slug?:string
   followups?: string[]
   story?: StoryNode[]
-
+  difficulty?: string
+  estimated_time?: string
+  office_visit?: string
+  comparison?:Comparison[]
 }
+
+
 
 export default function Dashboard(){
 
@@ -145,6 +158,13 @@ setLoading={setLoading}
 <h2 className="text-2xl font-bold mb-4">
 {guide.title}
 </h2>
+<ProcessMeter
+difficulty={guide.difficulty}
+estimated_time={guide.estimated_time}
+office_visit={guide.office_visit}
+/>
+
+<ComparisonTable items={guide.comparison} />
 
 </div>
 
