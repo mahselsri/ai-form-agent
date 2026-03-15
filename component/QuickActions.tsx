@@ -1,10 +1,20 @@
 "use client"
+type StoryNode = {
+  stage:string
+  description:string
+  emotion:string
+}
+
 type Guide = {
   title: string
   steps?: any[]
   documents?: any[]
   timeline?: any[]
   notes?: string[]
+  slug?:string
+  followups?: string[]
+  story?: StoryNode[]
+
 }
 
 type Props = {
@@ -28,8 +38,25 @@ body: JSON.stringify({ message: query })
 
 const data = await res.json()
 
-setGuide(data)
 
+
+const saveRes = await fetch("/api/save-guide",{
+method:"POST",
+headers:{ "Content-Type":"application/json"},
+body:JSON.stringify({
+title:data.title,
+content:data
+})
+})
+const saved = await saveRes.json()
+console.log("Saved:", saved)
+
+// 3️⃣ attach slug
+const guideWithSlug = {
+...data,
+slug:saved.slug
+}
+setGuide(guideWithSlug )
 }catch(err){
 
 console.error("AI Error:",err)

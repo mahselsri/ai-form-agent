@@ -61,6 +61,15 @@ Schema:
      "description":""
    }
  ]
+   "followups":[ "" ]
+    "story":[
+   {
+     "stage":"",
+     "description":"",
+     "emotion":""
+   }
+ ]
+
 }
 
 Rules:
@@ -68,7 +77,18 @@ Rules:
 - Use only real official URLs
 - If multiple useful links exist include them
 - No explanation outside JSON
+
+Followups should contain 3 relevant questions the user may ask next.
+
+Example:
+"followups":[
+ "What documents are needed?",
+ "What is the passport fee?",
+ "How long does the process take?"
+]
+
 `
+
 },
 {
 role: "user",

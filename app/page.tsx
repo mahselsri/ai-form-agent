@@ -10,6 +10,8 @@ import StepCard from "@/component/StepCard"
 import Timeline from "@/component/Timeline"
 import Checklist from "@/component/Checklist"
 import InfoBox from "@/component/InfoBox"
+import FollowUps from "@/component/FollowUps"
+import ProcessStory from "@/component/ProcessStory"
 
 type Step = {
   title: string
@@ -26,12 +28,22 @@ type TimelineItem = {
   duration: string
 }
 
+type StoryNode = {
+  stage:string
+  description:string
+  emotion:string
+}
+
 type Guide = {
   title: string
-  steps?: Step[]
-  documents?: Documents[]
-  timeline?: TimelineItem[]
+  steps?: any[]
+  documents?: any[]
+  timeline?: any[]
   notes?: string[]
+  slug?:string
+  followups?: string[]
+  story?: StoryNode[]
+
 }
 
 export default function Dashboard(){
@@ -71,8 +83,26 @@ Your AI Guide for any Process, procedure, directions ex college admission, booki
 Information At Your Finger Tips.
 </p>
 
-</div>
 
+
+
+<button
+className="bg-green-600 text-white px-4 py-2 rounded-lg mb-4"
+onClick={()=>{
+
+const url = `${window.location.origin}/guide/${guide.slug}`
+
+navigator.clipboard.writeText(url)
+
+alert("Guide link copied!!!",guide.slug)
+
+}}
+>
+Share Guide
+</button>
+
+
+</div>
 {/* Search */}
 
 <SearchBar
@@ -118,7 +148,7 @@ setLoading={setLoading}
 </div>
 
 {/* Steps */}
-
+<ProcessStory story={guide.story}/>
 <div className="bg-white rounded-xl shadow-md p-6">
 
 <h3 className="font-semibold mb-4 text-lg">
@@ -152,7 +182,24 @@ Steps
 <div className="bg-white rounded-xl shadow-md p-6">
 
 <InfoBox notes={guide.notes}/>
+<FollowUps
+questions={guide.followups}
+askAI={(q)=>{
+setLoading(true)
 
+fetch("/api/chat",{
+method:"POST",
+headers:{ "Content-Type":"application/json" },
+body: JSON.stringify({ message: q })
+})
+.then(res=>res.json())
+.then(data=>{
+setGuide(data)
+setLoading(false)
+})
+
+}}
+/>
 </div>
 
 </div>
