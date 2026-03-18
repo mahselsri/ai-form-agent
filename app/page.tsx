@@ -14,6 +14,8 @@ import FollowUps from "@/component/FollowUps"
 import ProcessStory from "@/component/ProcessStory"
 import ProcessMeter from "@/component/ProcessMeter"
 import ComparisonTable from "@/component/ComparisonTable"
+import ExplainURL from "@/component/ExplainURL"
+import WebExplainer from "@/component/WebExplainer"
 type Step = {
   title: string
   description: string
@@ -63,7 +65,8 @@ export default function Dashboard(){
 
 const [guide, setGuide] = useState<Guide | null>(null)
 const [loading,setLoading]=useState(false)
-
+const [webExplain,setWebExplain] = useState(null)
+const [activeTab,setActiveTab] = useState("guide")
 return(
 
 <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
@@ -117,7 +120,34 @@ Share Guide
 
 
 </div>
+<div className="flex gap-4 mb-6 border-b">
+
+<button
+onClick={()=>setActiveTab("guide")}
+className={`pb-2 ${
+activeTab==="guide"
+? "border-b-2 border-blue-600 font-semibold"
+: "text-gray-500"
+}`}
+>
+Ask AI Guide
+</button>
+
+<button
+onClick={()=>setActiveTab("explain")}
+className={`pb-2 ${
+activeTab==="explain"
+? "border-b-2 border-blue-600 font-semibold"
+: "text-gray-500"
+}`}
+>
+Explain Website
+</button>
+
+</div>
 {/* Search */}
+
+{activeTab==="guide" && (
 
 <SearchBar
 setGuide={setGuide}
@@ -125,14 +155,22 @@ loading={loading}
 setLoading={setLoading}
 />
 
-{/* Quick Actions */}
+)}
 
+{activeTab==="explain" && (
+
+<ExplainURL setWebExplain={setWebExplain}/>
+
+)}
+
+{/* Quick Actions */}
+{activeTab==="guide" && (
 <QuickActions
 setGuide={setGuide}
 loading={loading}
 setLoading={setLoading}
 />
-
+)}
 {/* Loading */}
 
 {loading && (
@@ -149,7 +187,7 @@ setLoading={setLoading}
 
 {/* Result Section */}
 
-{guide && !loading && (
+{activeTab==="guide" && guide && !loading && (
 
 <div className="mt-10 space-y-6">
 
@@ -228,6 +266,12 @@ setLoading(false)
 )}
 
 </div>
+
+{activeTab==="explain" && webExplain && !loading && (
+
+<WebExplainer data={webExplain}/>
+
+)}
 
 </div>
 
