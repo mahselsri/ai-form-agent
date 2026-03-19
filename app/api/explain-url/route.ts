@@ -72,6 +72,15 @@ Rules:
 - No assumptions
 - Keep it simple and actionable
 - Links must be valid and relevant
+- Use only real official URLs
+- If multiple useful links exist include them
+- No explanation outside JSON
+- Provide ONLY real and working official government URLs.
+- Never invent URLs.
+- Links must point to the correct official application or information page.
+- Ensure URLs are valid and currently used government, official, valid portals.
+- dont provide spam, porn, violent, abuse, terror ,hate related evn if requested completely avoid
+
 
 Example JSON output
 {
