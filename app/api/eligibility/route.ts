@@ -38,6 +38,10 @@ User description:
 
 From the below Indian government schemes, return ONLY relevant schemes.
 
+Also include:
+- why_recommended (1 line personalized reason)
+- score (1-10 relevance score)
+
 Schemes:
 ${JSON.stringify(baseData)}
 
@@ -49,6 +53,8 @@ Return ONLY JSON array:
 "description":"",
 "eligibility":"",
 "benefits":"",
+"why_recommended":"",
+"score":0,
 "link":""
 }
 ]
@@ -57,6 +63,7 @@ Rules:
 - Only include relevant schemes
 - Do NOT change links
 - Keep explanation simple
+- score should reflect how relevant it is
 - Max 5 results
 `
 
@@ -91,8 +98,9 @@ try{
 }
 
 console.log("Final response:", parsed)
+const sorted = parsed.sort((a:any,b:any) => b.score - a.score)
 // ✅ 8. Merge with trusted links
-const final = parsed.map((item:any) => {
+const final = sorted.map((item:any) => {
 
 const match = baseSchemes.find(s => s.name === item.name)
 
@@ -101,6 +109,8 @@ return {
   description: item.description || "",
   eligibility: item.eligibility || "",
   benefits: item.benefits || "",
+  why_recommended: item.why_recommended || "",
+  score: item.score || 0,
   link: match?.link || ""   // 🔥 always trusted
 }
 
