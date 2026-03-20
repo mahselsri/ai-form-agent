@@ -17,6 +17,8 @@ import ComparisonTable from "@/component/ComparisonTable"
 import ExplainURL from "@/component/ExplainURL"
 import WebExplainer from "@/component/WebExplainer"
 import SchemeFinder from "@/component/SchemeFinder"
+import EligibilityChecker from "@/component/EligibilityChecker"
+import SchemeResults from "@/component/SchemeResults"
 type Step = {
   title: string
   description: string
@@ -156,6 +158,16 @@ activeTab==="scheme"
 >
 Find Schemes
 </button>
+
+<button onClick={()=>setActiveTab("eligibility")}
+className={`pb-2 ${
+activeTab==="eligibility"
+? "border-b-2 border-blue-600 font-semibold"
+: "text-gray-500"
+}`}
+>
+Check Elgibility
+</button>
 </div>
 {/* Search */}
 
@@ -192,6 +204,16 @@ setGuide={setGuide}
 loading={loading}
 setLoading={setLoading}
 />
+)}
+
+{activeTab==="eligibility" && (
+
+<EligibilityChecker
+  setSchemes={setSchemes}
+  setLoading={setLoading}
+  loading={loading}
+/>
+
 )}
 {/* Loading */}
 
@@ -326,8 +348,15 @@ Apply / Learn More →
 
 ))}
 
+
+
 </div>
 
+)}
+
+{'ui for eligibility'}
+{activeTab === "eligibility" && !loading && schemes && (
+  <SchemeResults schemes={schemes} />
 )}
 </div>
 

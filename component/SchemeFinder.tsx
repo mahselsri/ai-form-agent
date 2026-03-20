@@ -44,6 +44,9 @@ export default function SchemeFinder({setSchemes, loading, setLoading }: Props){
 
   return(
 <div className="bg-white shadow p-6 rounded-xl mt-6">
+    <h3 className="font-semibold mb-3">
+Search by name, eligibility, or benefit" 
+</h3>
     <div className="flex gap-3">
 
        
