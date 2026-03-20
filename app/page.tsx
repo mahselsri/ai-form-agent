@@ -354,7 +354,7 @@ Apply / Learn More →
 
 )}
 
-{'ui for eligibility'}
+
 {activeTab === "eligibility" && !loading && schemes && (
   <SchemeResults schemes={schemes} />
 )}
