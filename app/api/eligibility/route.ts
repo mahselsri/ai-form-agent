@@ -46,7 +46,7 @@ Schemes:
 ${JSON.stringify(baseData)}
 
 Return ONLY JSON array:
-
+{
 [
 {
 "name":"",
@@ -58,6 +58,7 @@ Return ONLY JSON array:
 "link":""
 }
 ]
+}
 
 Rules:
 - Only include relevant schemes

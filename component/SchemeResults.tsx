@@ -1,5 +1,5 @@
 "use client"
-
+import ShareButton from "./ShareButton"
 type Scheme = {
   name: string
   description?: string
@@ -24,7 +24,11 @@ if(!schemes || schemes.length === 0){
 return(
 
 <div className="mt-8 space-y-5">
-
+<ShareButton
+  title="Eligiblity Matched"
+  content={schemes}
+  type="schemes"
+/>
 {schemes.map((s, i)=>(
   
 <div key={i} className="bg-white p-5 rounded-xl shadow hover:shadow-md transition">

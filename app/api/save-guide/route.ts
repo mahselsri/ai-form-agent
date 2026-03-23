@@ -2,12 +2,17 @@ import { supabase } from "@/lib/supabase"
 
 export async function POST(req: Request){
 
+    
+
 try{
 
 const body = await req.json()
 
-const { title, content } = body
+const { title, content,type } = body
 
+console.log("Save Guide inside:", title)
+console.log("Save Guide inside:", content)
+console.log("Save type inside:", type)
 if(!title || !content){
 return Response.json(
 { error:"Missing title or content" },
@@ -43,7 +48,8 @@ const { data, error } = await supabase
 {
 slug,
 title,
-content_json: content
+content_json: content,
+type:type
 }
 ])
 .select()

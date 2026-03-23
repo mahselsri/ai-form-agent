@@ -19,6 +19,7 @@ import WebExplainer from "@/component/WebExplainer"
 import SchemeFinder from "@/component/SchemeFinder"
 import EligibilityChecker from "@/component/EligibilityChecker"
 import SchemeResults from "@/component/SchemeResults"
+import ShareButton from "@/component/ShareButton"
 type Step = {
   title: string
   description: string
@@ -106,21 +107,7 @@ Information At Your Finger Tips.
 
 
 
-<button
-className="bg-green-600 text-white px-4 py-2 rounded-lg mb-4"
-onClick={()=>{
-if(!guide?.slug) return
-const url = `${window.location.origin}/guide/${guide.slug}`
 
-
-navigator.clipboard.writeText(url)
-
-alert("Guide link copied!!!")
-
-}}
->
-Share Guide
-</button>
 
 
 </div>
@@ -234,7 +221,11 @@ setLoading={setLoading}
 {activeTab==="guide" && guide && !loading && (
 
 <div className="mt-10 space-y-6">
-
+<ShareButton
+  title={guide.title}
+  content={guide}
+  type="guide"
+/>
 <div className="bg-white rounded-xl shadow-md p-6">
 
 <h2 className="text-2xl font-bold mb-4">
@@ -320,7 +311,11 @@ setLoading(false)
 {activeTab==="scheme" && schemes && !loading && (
 
 <div className="mt-10 space-y-4">
-
+<ShareButton
+  title="Recommended Schemes"
+  content={schemes}
+  type="schemes"
+/>
 {schemes.map((s:any, i:number)=>(
 
 <div key={i} className="bg-white p-5 rounded-xl shadow">

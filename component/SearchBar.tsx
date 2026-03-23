@@ -48,12 +48,13 @@ body: JSON.stringify({ message: query })
 })
 
 const data = await res.json()
-
+/*
 const saveRes = await fetch("/api/save-guide",{
 method:"POST",
 headers:{ "Content-Type":"application/json"},
 body:JSON.stringify({
 title:data.title,
+type:"guide",
 content:data
 })
 })
@@ -65,7 +66,8 @@ const guideWithSlug = {
 ...data,
 slug:saved.slug
 }
-setGuide(guideWithSlug )
+*/
+setGuide(data)
 
 }catch(err){
 

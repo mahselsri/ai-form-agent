@@ -37,6 +37,26 @@ export default function SchemeFinder({setSchemes, loading, setLoading }: Props){
 
     const data = await res.json()
     console.log("schema", data);
+
+/*
+    const saveRes = await fetch("/api/save-guide",{
+method:"POST",
+headers:{ "Content-Type":"application/json"},
+body:JSON.stringify({
+title:query,
+type:"scheme",
+content:data
+})
+})
+const saved = await saveRes.json()
+console.log("Saved:", saved)
+
+// 3️⃣ attach slug
+const guideWithSlug = {
+...data,
+slug:saved.slug
+}
+*/
     setSchemes(data)
 
     setLoading(false)

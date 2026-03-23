@@ -1,5 +1,6 @@
 "use client"
 
+import ShareButton from "./ShareButton"
 type LinkItem = {
   title: string
   url: string
@@ -29,6 +30,11 @@ export default function WebExplainer({ data }: { data: WebExplain }) {
 
     <div className="bg-white rounded-2xl shadow-md p-6 space-y-6">
 
+      <ShareButton
+        title="Explain Website"
+        content={data}
+        type="explain"
+      />
       {/* Title */}
       <h2 className="text-2xl font-bold text-blue-600">
         {data.title}
