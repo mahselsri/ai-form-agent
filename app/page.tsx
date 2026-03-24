@@ -96,9 +96,9 @@ AI Personal Guide
 
 <div className="text-center mb-8">
 
-<h2 className="text-3xl md:text-4xl font-bold mb-3">
-Your intelligent guide for complex processes—college admissions, tax filings, bookings, and beyond.
-</h2>
+<h3 className="text-3xl md:text-4xl font-bold mb-3">
+Your intelligent guide for complex gov processes, college admissions, tax filings, bookings, and beyond.
+</h3>
 
 <p className="text-gray-600">
 Information At Your Finger Tips.
