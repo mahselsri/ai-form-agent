@@ -88,7 +88,7 @@ return(
 <div className="flex gap-3">
 
 <input
-className="w-full border rounded-lg p-4"
+className="w-full border p-3 rounded-lg"
 placeholder="Ask anything about Indian processes..."
 value={query}
 onChange={(e)=>setQuery(e.target.value)}
@@ -97,10 +97,12 @@ onChange={(e)=>setQuery(e.target.value)}
 <button
 onClick={askAI}
 disabled={loading}
-className={`px-6 rounded-lg text-white flex items-center gap-2
+className={`bg-green-600 text-white px-5 rounded-lg
 ${loading ? "bg-blue-400 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700"}
 `}
 >
+
+    
 
 {loading ? (
 <>

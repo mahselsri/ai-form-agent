@@ -72,9 +72,7 @@ return(
 
 <div className="bg-white shadow p-6 rounded-xl mt-6">
 
-<h3 className="font-semibold mb-3">
-Paste a Website Link
-</h3>
+
 
 <div className="flex gap-3">
 

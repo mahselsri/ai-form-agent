@@ -135,16 +135,6 @@ activeTab==="explain"
 Explain Website
 </button>
 
-<button
-onClick={()=>setActiveTab("scheme")}
-className={`pb-2 ${
-activeTab==="scheme"
-? "border-b-2 border-blue-600 font-semibold"
-: "text-gray-500"
-}`}
->
-Find Schemes
-</button>
 
 <button onClick={()=>setActiveTab("eligibility")}
 className={`pb-2 ${
@@ -153,7 +143,7 @@ activeTab==="eligibility"
 : "text-gray-500"
 }`}
 >
-Check Elgibility
+Find Schemes
 </button>
 </div>
 {/* Search */}

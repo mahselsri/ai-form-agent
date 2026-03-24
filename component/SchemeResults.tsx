@@ -1,5 +1,6 @@
 "use client"
 import ShareButton from "./ShareButton"
+import CompareSchemes from "./CompareSchemes"
 type Scheme = {
   name: string
   description?: string
@@ -29,6 +30,7 @@ return(
   content={schemes}
   type="schemes"
 />
+<CompareSchemes schemes={schemes} />
 {schemes.map((s, i)=>(
   
 <div key={i} className="bg-white p-5 rounded-xl shadow hover:shadow-md transition">
