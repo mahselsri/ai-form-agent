@@ -105,11 +105,6 @@ Information At Your Finger Tips.
 </p>
 
 
-
-
-
-
-
 </div>
 <div className="flex gap-4 mb-6 border-b">
 

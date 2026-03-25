@@ -1,6 +1,7 @@
 "use client"
 import ShareButton from "./ShareButton"
 import CompareSchemes from "./CompareSchemes"
+import ActionPlan from "./ActionPlan"
 type Scheme = {
   name: string
   description?: string
@@ -31,6 +32,7 @@ return(
   type="schemes"
 />
 <CompareSchemes schemes={schemes} />
+
 {schemes.map((s, i)=>(
   
 <div key={i} className="bg-white p-5 rounded-xl shadow hover:shadow-md transition">
@@ -40,6 +42,9 @@ return(
   <h3 className="text-lg font-bold text-green-600">
     {s.name}
   </h3>
+  <ActionPlan
+  schemeName={s.name}
+/>
 
   {s.score !== undefined && (
     <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">
